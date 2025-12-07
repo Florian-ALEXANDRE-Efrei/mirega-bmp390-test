@@ -77,3 +77,13 @@ Workflow minimal pour lire pression + température :
 - Mapping exact `Config::Oversampling::X1` → macro Bosch (`BMP3_NO_OVERSAMPLING` vs `BMP3_OVERSAMPLING_1X`).
 - Hypothèse actuelle sur les unités si la compensation entière est utilisée (TODO dans le code).
 - Pas encore de gestion détaillée des codes d’erreur, on relaie directement les retours Bosch.
+
+## État de la Partie 1 (librairie BMP390)
+
+- Wrapper C++ fonctionnel autour du driver Bosch :
+  - Architecture claire (BusInterface, Bmp390, Config, Measurement).
+  - Driver Bosch inchangé en third_party.
+- README dédié à la librairie + exemple d’utilisation.
+- Limitations connues :
+  - Mapping exact des enums à valider.
+  - Callbacks I2C/SPI encore en pseudo-code (stubs).
