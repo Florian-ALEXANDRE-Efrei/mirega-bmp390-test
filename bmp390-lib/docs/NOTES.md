@@ -46,3 +46,34 @@ Workflow minimal pour lire pression + température :
 5. Lire les mesures avec  
    `bmp3_get_sensor_data(BMP3_PRESS_TEMP, &data, &dev)`  
    puis utiliser `data.pressure` et `data.temperature`.
+
+## Design de la librairie C++ BMP390
+
+- Lib C++ de plus haut niveau au-dessus du driver C Bosch (BMP3_SensorAPI).
+- Fichiers principaux :
+  - `bmp390-lib/include/bmp390/bmp390_driver.hpp` : interface C++.
+  - `bmp390-lib/src/bmp390_driver.cpp` : implémentation de l’interface.
+  - `bmp390-lib/src/third_party/bmp3.c/h/defs.h` : driver Bosch inchangé.
+
+### Principes retenus
+
+- Abstraction de bus `BusInterface` :
+  - l’application fournit des callbacks `read`, `write`, `delay_us`.
+  - permet d’isoler la dépendance à la plateforme (I2C/SPI Linux, HAL STM32, etc.).
+- Classe `bmp390::Bmp390` :
+  - encapsule la structure `bmp3_dev` du driver Bosch.
+  - fournit trois méthodes principales :
+    - `init()` : initialise le capteur (bmp3_init).
+    - `configure(const Config&)` : configure oversampling/ODR/filtre + mode (bmp3_set_sensor_settings / bmp3_set_op_mode).
+    - `read_measurement(Measurement&)` : lit pression + température (bmp3_get_sensor_data).
+- `Config` :
+  - expose des enums C++ simples (Oversampling, OutputDataRate, IirFilterCoeff),
+  - mappées en interne vers les macros du driver Bosch.
+- `Measurement` :
+  - expose directement des unités physiques : `pressure_pa` (Pa), `temperature_c` (°C).
+
+### Points à vérifier / limites
+
+- Mapping exact `Config::Oversampling::X1` → macro Bosch (`BMP3_NO_OVERSAMPLING` vs `BMP3_OVERSAMPLING_1X`).
+- Hypothèse actuelle sur les unités si la compensation entière est utilisée (TODO dans le code).
+- Pas encore de gestion détaillée des codes d’erreur, on relaie directement les retours Bosch.
