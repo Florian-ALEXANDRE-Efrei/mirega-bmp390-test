@@ -87,3 +87,15 @@ Workflow minimal pour lire pression + température :
 - Limitations connues :
   - Mapping exact des enums à valider.
   - Callbacks I2C/SPI encore en pseudo-code (stubs).
+
+## État de la Partie 2 (multi-capteurs)
+
+- Document d’architecture : `docs/ARCHITECTURE_MULTISENSOR.md`
+  - Interface générique `ISensor`.
+  - Implémentations Bmp390Sensor et Hdc3022Sensor (pseudo-code).
+  - Boucle principale monothread avec calcul de température moyenne et alarme > 30 °C.
+- Exemple de pseudo-implémentation : `examples/multisensor_example.cpp`.
+
+Limitations:
+- Hdc3022Sensor uniquement en pseudo-code (I2C et formules à implémenter).
+- Pas de vraie gestion de threads ou de scheduler, architecture centrée sur une boucle simple.
