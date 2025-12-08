@@ -110,7 +110,7 @@ Cette partie met l’accent sur la **séparation des responsabilités** (capteur
 ## 6. Temps passé
 
 Le détail du temps passé par tâche est consigné dans TIMELOG.md.  
-Environ **8 heures** ont été consacrées au total, réparties entre :
+Environ **20 heures** ont été consacrées au total, réparties entre :
 
 - conception et implémentation de la librairie BMP390,  
 - réflexion et rédaction de l’architecture multi-capteurs,  
