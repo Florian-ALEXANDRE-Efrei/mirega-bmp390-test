@@ -119,3 +119,8 @@ Limitations:
 - `Hdc3022Sensor` : I2C et formules de conversion laissés en TODO (pseudo-code).
 - Callbacks I2C réels non implémentés (stubs pour `/dev/i2c-*`).
 - Pas de threads ni de scheduler : architecture volontairement simple, centrée sur une boucle.
+
+### Utilisation de l’IA
+
+Une partie du code et de la documentation (squelettes de classes, exemples, structuration de README) a été générée avec GitHub Copilot / IA générative, puis revue et adaptée manuellement.
+Les décisions d’architecture (interfaces, séparation en modules, choix de ce qui reste en pseudo-code) ont été prises et validées manuellement.

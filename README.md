@@ -115,3 +115,27 @@ Environ **8 heures** ont été consacrées au total, réparties entre :
 - conception et implémentation de la librairie BMP390,  
 - réflexion et rédaction de l’architecture multi-capteurs,  
 - écriture des exemples et de la documentation associée.
+
+## 7. Utilisation de l’IA générative
+
+Ce projet a été réalisé **avec l’aide d’outils d’IA générative**, principalement :
+
+- **GitHub Copilot / Copilot Chat** (VS Code, interface GitHub),
+- un assistant de type ChatGPT pour la réflexion et la structuration du travail.
+
+Rôle de ces outils :
+
+- génération de **squelettes de code** (par ex. wrapper C++ autour du driver Bosch, exemples `main`),
+- assistance pour la **rédaction de documentation** (README, notes d’architecture),
+- aide à la **mise en forme** (noms de fichiers, organisation des dossiers, structuration des sections).
+
+Rôle du développeur :
+
+- choix de l’**architecture globale** (organisation de la librairie, interface `ISensor`, design multi-capteurs),
+- **validation / adaptation** du code généré (simplifications, commentaires, TODO, limitations),
+- rédaction et ajustement du **TIMELOG** et des **notes** pour refléter le temps passé, les compromis et les pistes d’amélioration.
+
+L’objectif n’était pas de cacher l’usage de l’IA, mais au contraire de l’utiliser comme un outil de productivité, en gardant la responsabilité humaine sur :
+- la compréhension du sujet,
+- les décisions techniques,
+- la cohérence du livrable.
