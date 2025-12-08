@@ -1,3 +1,14 @@
+// Exemple multi-capteurs BMP390 + HDC3022
+// -------------------------------------------------------------
+// Cet exemple illustre l'architecture proposée dans
+// docs/ARCHITECTURE_MULTISENSOR.md.
+//
+// Attention :
+// - les callbacks I2C et Hdc3022Sensor sont laissés en pseudo-code,
+// - la boucle principale est volontairement limitée (break) pour
+//   éviter une boucle infinie dans un exemple,
+// - le but est de montrer la structure, pas un binaire prêt à exécuter.
+
 #include <vector>
 #include <memory>
 #include <iostream>
@@ -40,7 +51,9 @@ public:
     Bmp390Sensor(const BusInterface& bus, uint8_t i2c_addr)
         : bmp_(i2c_addr, bus, /*use_i2c=*/true)
     {
-        // Initialisation de base (erreurs ignorées ici pour simplifier)
+        // Initialisation de base (erreurs ignorées ici pour simplifier l'exemple).
+        // Dans un vrai système, il faudrait vérifier les codes de retour
+        // de init() / configure() et réagir en conséquence.
         (void)bmp_.init();
 
         Config cfg{};

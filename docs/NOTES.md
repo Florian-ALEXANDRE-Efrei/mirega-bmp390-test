@@ -53,7 +53,10 @@ Workflow minimal pour lire pression + température :
 - Fichiers principaux :
   - `bmp390-lib/include/bmp390/bmp390_driver.hpp` : interface C++.
   - `bmp390-lib/src/bmp390_driver.cpp` : implémentation de l’interface.
-  - `bmp390-lib/src/third_party/bmp3.c/h/defs.h` : driver Bosch inchangé.
+  - Driver Bosch utilisé tel quel :
+    - `bmp390-lib/src/third_party/bmp3.c`
+    - `bmp390-lib/src/third_party/bmp3.h`
+    - `bmp390-lib/src/third_party/bmp3_defs.h`
 
 ### Principes retenus
 

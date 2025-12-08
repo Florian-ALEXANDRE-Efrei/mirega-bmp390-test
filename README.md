@@ -55,6 +55,9 @@ L’exemple bmp390_example.cpp montre un flux minimal :
 
 ## 4. Partie 2 – Architecture multi-capteurs
 
+> Remarque : le capteur HDC3022 est illustré en pseudo-code (structure de classe prête,
+> mais accès I2C et formules de conversion à implémenter dans un contexte réel).
+
 La deuxième partie propose une **architecture générique** pour gérer plusieurs capteurs (BMP390 + HDC3022) :
 
 - Interface abstraite `ISensor` (décrite dans ARCHITECTURE_MULTISENSOR.md) :
