@@ -1,5 +1,3 @@
-# mirega-bmp390-test
-
 > Ce wrapper C++ a été développé dans le cadre d’un test technique.
 > L’objectif est de montrer une intégration propre du driver Bosch BMP3_SensorAPI
 > et une API C++ simple pour le capteur BMP390.
