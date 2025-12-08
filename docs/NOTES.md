@@ -99,3 +99,20 @@ Workflow minimal pour lire pression + température :
 Limitations:
 - Hdc3022Sensor uniquement en pseudo-code (I2C et formules à implémenter).
 - Pas de vraie gestion de threads ou de scheduler, architecture centrée sur une boucle simple.
+
+## État de la Partie 2 (multi-capteurs)
+
+- Documentation d’architecture : `docs/ARCHITECTURE_MULTISENSOR.md`
+  - Interface générique `ISensor` (update, getTemperatureC, log).
+  - Implémentations `Bmp390Sensor` (pression + température) et `Hdc3022Sensor` (température + humidité, pseudo-code).
+  - Boucle principale monothread :
+    - mise à jour et logging de chaque capteur,
+    - calcul de la température moyenne globale,
+    - déclenchement d’une alarme si T > 30 °C sur au moins un capteur.
+- Exemple de pseudo-implémentation : `examples/multisensor_example.cpp`.
+
+### Limitations connues
+
+- `Hdc3022Sensor` : I2C et formules de conversion laissés en TODO (pseudo-code).
+- Callbacks I2C réels non implémentés (stubs pour `/dev/i2c-*`).
+- Pas de threads ni de scheduler : architecture volontairement simple, centrée sur une boucle.
